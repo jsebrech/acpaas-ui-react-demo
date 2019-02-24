@@ -23,7 +23,7 @@ function initializeDatabase(callback) {
 
 function initializeExpress(callback) {
   app = express();
-  app.set('port', process.env.PORT);
+  app.set('port', process.env.PORT || 80);
   app.use(helmet());
   app.use(bodyParser.json({ limit: '4096kb' }));
 
@@ -50,7 +50,7 @@ function startListening(callback) {
 
 function start(cb) {
   async.series([
-    initializeDatabase,
+    //initializeDatabase,
     initializeExpress,
     startListening,
   ], (err) => {
